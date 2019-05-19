@@ -1,0 +1,53 @@
+﻿{
+"result":"Ajw_iwTa_MUDW6X8joW3kRuI4S7er_BjFM2wwakHH7Wjm608PXj9sG9McG3Vjq4WZ8Gi6CdIikUA1DDp373KdHcC78E_jlkRHSX4KbP-5dI_Y0Aa4rsO1O7SzYvJPSQFz6C62S8SGTEmPZYZJdoO7NzToO1343OOoITtJYwlZOQdqy2HLWOAgM8JjcFoUW8T9LrUXhdcnMQJuZNbamHRuTv62T6KGWxeE_1EQrnzG1iS2xOlS7lV-nRUPQ467XTXBz_A6L3UDwlVJofEGkM04d3112uFTWWHyIau3XjpQIvxxVBDpDRAOa1ej7xga5qbRtdD83jikUhY9wWX0Ma3MaA_Lpyj5BDd23-M1YA7gsDb66SjAQR_2xpuz2bpq6qznZWYAK3C-E1-ShoiuCObI7woPNll-ZX05KfoSJEXsbKAPYfYtysFXptM4QlA5UtG3q6mogerGuHLtLiNxG97QDzFFCz_X89TnHnrow95UzZ-jt3NImKuwRLl1n1TNhCvBjPtLVyYzwPXZUviqvmenHD4zvNIIfdVbfexjuU3IYkup7CSYcCQtuUGILVSSnXA",
+"targetUrl":null,
+"success":true,
+"error":null,
+"unAuthorizedRequest":false,
+"__abp":true
+}
+
+
+
+               #region commented 
+
+                //var robotDetails = ((JArray)JObject.Parse(robotResponse)["value"])
+                //    .Select(
+                //             x => ((string)x["MachineName"]).Equals(oldMachineName) &&
+                //                  ((string)x["MachineId"])  .Equals(oldMachineId))
+                //    .ToList();
+
+                //var datalist = JsonConvert.DeserializeObject<List<Robots>>(robotResponse);
+
+
+                //var obj = JsonConvert.DeserializeObject(JObject.Parse(robotResponse)["value"].ToString());
+                //List<Robots> list = JsonConvert.DeserializeObject<List<Robots>>(robotResponse);
+                #endregion
+
+
+
+
+				
+            string data = @"{
+                'Email': 'xxxx@example.com',
+                'Active': true}
+                ";
+            string url = "http://localhost:57310/api/values";
+            Encoding encoding = Encoding.Default;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            
+            request.Method = "PATCH";
+            request.ContentType = "application/json; charset=utf-8";
+            byte[] buffer = encoding.GetBytes(data);
+            Stream dataStream = request.GetRequestStream();
+            dataStream.Write(buffer, 0, buffer.Length);
+            dataStream.Close();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            string result = "";
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), System.Text.Encoding.Default))
+            {
+                result = reader.ReadToEnd();
+            }
+            MessageBox.Show(result);
+

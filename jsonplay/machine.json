@@ -1,0 +1,61 @@
+{
+  "@odata.context": "https://platform.uipath.com/odata/$metadata#Machines",
+  "@odata.count": 5,
+  "value": [
+    {
+      "LicenseKey": null,
+      "Name": "HsarvaUiPath4",
+      "Type": "Standard",
+      "NonProductionSlots": 0,
+      "UnattendedSlots": 0,
+      "Id": 145049,
+      "RobotVersions": []
+    },
+    {
+      "LicenseKey": null,
+      "Name": "laptop-5eife0qi",
+      "Type": "Standard",
+      "NonProductionSlots": 0,
+      "UnattendedSlots": 0,
+      "Id": 145056,
+      "RobotVersions": []
+    },
+    {
+      "LicenseKey": null,
+      "Name": "HsarvaUiPath",
+      "Type": "Standard",
+      "NonProductionSlots": 0,
+      "UnattendedSlots": 0,
+      "Id": 144926,
+      "RobotVersions": [
+        {
+          "Count": 1,
+          "Version": "18.4.2.0"
+        }
+      ]
+    },
+    {
+      "LicenseKey": null,
+      "Name": "HsarvaUiPath2",
+      "Type": "Standard",
+      "NonProductionSlots": 0,
+      "UnattendedSlots": 0,
+      "Id": 144987,
+      "RobotVersions": []
+    },
+    {
+      "LicenseKey": null,
+      "Name": "Chris's Laptop",
+      "Type": "Standard",
+      "NonProductionSlots": 0,
+      "UnattendedSlots": 0,
+      "Id": 145072,
+      "RobotVersions": [
+        {
+          "Count": 1,
+          "Version": null
+        }
+      ]
+    }
+  ]
+}
