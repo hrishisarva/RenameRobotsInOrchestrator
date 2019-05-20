@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,5 +41,28 @@ namespace ConnectToPlatform
         public string MachineName { get; set;  }
         public long MachineId { get; set;  }
         public int Identifier { get; set;  }
+    }
+
+    public static class ApiDetails
+    {
+        
+      
+
+        public static string GetAuthenticationUrl()
+        {
+            return Convert.ToString(ConfigurationSettings.AppSettings["AuthenticationUrl"]);
+        }
+        public static string GetRobotsUrl()
+        {
+            return Convert.ToString(ConfigurationSettings.AppSettings["GetRobotsUrl"]);
+        }
+        public static string GetMachinesUrl()
+        {
+            return Convert.ToString(ConfigurationSettings.AppSettings["GetMachinesUrl"]);
+        }
+        public static string PatchRobotDetailsUrl()
+        {
+            return Convert.ToString(ConfigurationSettings.AppSettings["PatchRobotDetailsUrl"]);
+        }
     }
 }

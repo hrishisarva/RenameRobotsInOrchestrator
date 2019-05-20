@@ -67,22 +67,6 @@ namespace ConnectToPlatform
 
     public class Program
     {
-        // private const string tenantName = "RainbowCafe";
-        // private const string emailID = "hrishi.sarva@uipath.com";
-        // private const string password = "bmwM32019*";
-
-        public const
-            string authenticateUrl = @"https://platform.uipath.com/api/account/authenticate";
-
-        public const
-            string getRobotsUrl = @"https://platform.uipath.com/odata/Robots";
-
-        public const
-         string patchRobotDetailsUrl = @"https://platform.uipath.com/odata/Robots";
-
-        public const
-         string getMachinesUrl = @"https://platform.uipath.com/odata/Machines";
-
 
         static void Main(string[] args)
         {
@@ -261,7 +245,7 @@ namespace ConnectToPlatform
         public static string PostAuthenticateToUiPathPlatform(string tenantName, string emailID, string password)
         {
 
-            Console.WriteLine("Checking your credentials with Orchestrator ... Please wait ");
+            Console.WriteLine("Checking your credentials with Orchestrator ...");
             using (var wb = new WebClient())
             {
                 var data = new NameValueCollection
@@ -271,7 +255,7 @@ namespace ConnectToPlatform
                     ["password"] = password
                 };
 
-                var response = wb.UploadValues(authenticateUrl, "POST", data);
+                var response = wb.UploadValues(ApiDetails.GetAuthenticationUrl(), "POST", data);
                 string responseInString = Encoding.UTF8.GetString(response);
 
                 return responseInString;
@@ -307,12 +291,11 @@ namespace ConnectToPlatform
 
             try
             {
-                //Console.WriteLine("Begin Orchestrator call to get Robots details");
                 HttpClient httpClient = new HttpClient();
                 httpClient.DefaultRequestHeaders.Remove("Authorization");
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 
-                var response = await httpClient.GetStringAsync(getRobotsUrl);
+                var response = await httpClient.GetStringAsync(ApiDetails.GetRobotsUrl());
 
                 return response.ToString();
 
@@ -384,10 +367,7 @@ namespace ConnectToPlatform
                 httpClient.DefaultRequestHeaders.Remove("Authorization");
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 
-                //var responseMessage = await httpClient.PatchAsync(new Uri("testUri"), httpContent);
-
-                string newPatchurl = String.Concat(patchRobotDetailsUrl, "(", robot.Id.ToString(), ")");
-
+                string newPatchurl = String.Concat(ApiDetails.PatchRobotDetailsUrl(), "(", robot.Id.ToString(), ")");
 
                 Uri newPatchUri = new Uri(newPatchurl);
 
@@ -416,7 +396,7 @@ namespace ConnectToPlatform
                 httpClient.DefaultRequestHeaders.Remove("Authorization");
                 httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
 
-                var response = await httpClient.GetStringAsync(getMachinesUrl);
+                var response = await httpClient.GetStringAsync(ApiDetails.GetMachinesUrl());
 
                 return response.ToString();
 
@@ -431,7 +411,6 @@ namespace ConnectToPlatform
 
         }
 
-
         public static int SelectOldMachineDetails()
         {
             Console.WriteLine("\nSelect Old Machine Identifier ");
@@ -440,6 +419,7 @@ namespace ConnectToPlatform
             return oldMachineDetails;
 
         }
+
         public static int SelectNewMachineDetails()
         {
             Console.WriteLine("\nSelect New Machine Identifier ");

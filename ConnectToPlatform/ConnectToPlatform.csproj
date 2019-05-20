@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0A177F8E-0CDD-4705-AFF7-6E1FF9B0B270}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConnectToPlatform</RootNamespace>
-    <AssemblyName>ConnectToPlatform</AssemblyName>
+    <RootNamespace>RenameRobotsInOrchestrator</RootNamespace>
+    <AssemblyName>RenameRobotsInOrchestrator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,7 +51,9 @@
     <Compile Include="Robots.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
